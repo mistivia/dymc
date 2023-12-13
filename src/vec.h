@@ -1,5 +1,5 @@
-#ifndef CONTAINERS_H_
-#define CONTAINERS_H_
+#ifndef DYMC_VEC_H_ 
+#define DYMC_VEC_H_ 
 
 #include <stddef.h>
 

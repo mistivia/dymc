@@ -6,7 +6,7 @@
 
 int main() {
     void *v = new_vec();
-    NEW(double, n) {0};
+    double *n = malloc(sizeof(double));
     *n = 42.42;
     vec_push_back(v, n);
     assert(*(double*)vec_get(v, 0) == 42.42);
