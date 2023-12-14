@@ -34,10 +34,11 @@ make test
 
 ```
 #include <dymc.h>
+#include <stdio.h>
 
 int main() {
     void *v = new_vec();
-    
+
     int *p;
 
     p= malloc(sizeof(int));
@@ -49,7 +50,7 @@ int main() {
     vec_push_back(v, p);
 
     for (int i = 0; i < vec_size(v); i++) {
-        printf("%d\n", *(int*)vec_get(v, i)); 
+        printf("%d\n", *(int*)vec_get(v, i));
     }
 
     return 0;
@@ -60,17 +61,18 @@ int main() {
 
 ```
 #include <dymc.h>
+#include <stdio.h>
 
 int main() {
     void *d = new_dict();
     int *p;
 
     p = malloc(sizeof(int));
-    p = 1;
+    *p = 1;
     dict_set(d, "a", p);
 
     p = malloc(sizeof(int));
-    p = 2;
+    *p = 2;
     dict_set(d, "b", p);
 
     printf("%d\n", *(int*)dict_get(d, "a"));
