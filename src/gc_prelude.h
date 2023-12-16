@@ -1,5 +1,8 @@
-#ifndef GC_PRELUDE_H_
-#define GC_PRELUDE_H_
+// Copyright (C) 2023 Arcane Lactiflora <arcanelactiflora@outlook.com>
+// Licensed under GPLv3. See LICENSE for details.
+
+#ifndef DYMC_GC_PRELUDE_H_
+#define DYMC_GC_PRELUDE_H_
 
 #include <gc.h>
 

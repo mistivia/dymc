@@ -1,5 +1,8 @@
-#ifndef MAP_H_
-#define MAP_H_
+// Copyright (C) 2023 Arcane Lactiflora <arcanelactiflora@outlook.com>
+// Licensed under GPLv3. See LICENSE for details.
+
+#ifndef DYMC_MAP_H_
+#define DYMC_MAP_H_
 
 #include "rb_tree.h"
 

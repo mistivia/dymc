@@ -1,3 +1,6 @@
+// Copyright (C) 2023 Arcane Lactiflora <arcanelactiflora@outlook.com>
+// Licensed under GPLv3. See LICENSE for details.
+
 #include "map.h"
 #include "rb_tree.h"
 
