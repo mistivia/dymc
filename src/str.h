@@ -7,16 +7,15 @@
 #include <stdio.h>
 #include <stddef.h>
 
-char *str_strip(char *str);
-char **str_split(char *str, char delim);
-void destroy_str_list(char **list);
+char *str_strip(const char *str);
+char **str_split(const char *str, char delim);
 
 
 // string stream
 void* new_ss();
 void ss_add(void *self, char *format, ...);
 void ss_addc(void *self, char c);
-char *ss_str(void *self);
+char *ss_cstr(void *self);
 size_t ss_size(void* self);
 
 char *fgetline(FILE *fp);

@@ -11,7 +11,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-char **str_split(char *str, char delim) {
+char **str_split(const char *str, char delim) {
     char **ret;
 
     if (str == NULL) return NULL;
@@ -21,8 +21,8 @@ char **str_split(char *str, char delim) {
         return ret;
     }
     int count = 0;
-    char *begin = str;
-    for (char *p = str; *p != '\0'; p++) {
+    const char *begin = str;
+    for (const char *p = str; *p != '\0'; p++) {
         if (*p != delim && !(delim == '\0' && isspace(*p))) {
             continue;
         }
@@ -36,7 +36,7 @@ char **str_split(char *str, char delim) {
     begin = str;
     int i = 0;
     bool finished = false;
-    for (char *p = str; !finished; p++) {
+    for (const char *p = str; !finished; p++) {
         if (*p == '\0') finished = true;
         if (*p != delim && *p != '\0' && !(delim == '\0' && isspace(*p))) {
             continue;
@@ -56,11 +56,11 @@ char **str_split(char *str, char delim) {
     return ret;
 }
 
-char *str_strip(char *str) {
+char *str_strip(const char *str) {
     if (str == NULL) return NULL;
     int len = strlen(str);
-    char *begin = str;
-    char *end = str + len - 1;
+    const char *begin = str;
+    const char *end = str + len - 1;
     while (isspace(*begin) && begin < end) {
         begin++;
     }
@@ -117,7 +117,7 @@ void ss_addc(void *self_, char c) {
     self->size++;
 }
 
-char *ss_str(void *self_) {
+char *ss_cstr(void *self_) {
     str_builder_t *self = self_;
     return self->buf;    
 }
@@ -133,7 +133,7 @@ char *fgetline(FILE *fp) {
         int c = fgetc(fp);
         if (c == EOF && ss_size(ss) == 0) return NULL;
         if (c != EOF) ss_addc(ss, c);
-        if (c == EOF || c == '\n') return ss_str(ss);
+        if (c == EOF || c == '\n') return ss_cstr(ss);
     }
     return NULL;
 }
