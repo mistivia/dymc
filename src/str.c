@@ -1,4 +1,4 @@
-// Copyright (C) 2023 Arcane Lactiflora <arcanelactiflora@outlook.com>
+// Copyright (C) 2023 Mistivia <mistivia@soverin.net>
 // Licensed under GPLv3. See LICENSE for details.
 
 #include "str.h"
@@ -11,13 +11,14 @@
 #include <stdlib.h>
 #include <string.h>
 
-char **str_split(const char *str, char delim) {
-    char **ret;
+#include "gc_prelude.h"
+#include "vec.h"
+
+void *str_split(const char *str, char delim) {
+    void* ret = new_vec();
 
     if (str == NULL) return NULL;
     if (*str == '\n') {
-        ret = malloc(sizeof(char *));
-        *ret = NULL;
         return ret;
     }
     int count = 0;
@@ -30,8 +31,6 @@ char **str_split(const char *str, char delim) {
         if (size > 0) count++;
     }
     count++;
-    ret = malloc((count + 1) * sizeof(char *));
-    memset(ret, 0, (count + 1) * sizeof(char *));
 
     begin = str;
     int i = 0;
@@ -50,8 +49,7 @@ char **str_split(const char *str, char delim) {
         buf[size] = '\0';
         memcpy(buf, begin, size * sizeof(char));
         begin = p + 1;
-        ret[i] = buf;
-        i++;
+        vec_push_back(ret, buf);
     }
     return ret;
 }
