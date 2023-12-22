@@ -46,7 +46,7 @@ void vec_erase(void *self_, size_t n) {
     if (self->length <= n) {
         return;
     }
-    memcpy(self->buf + n, self->buf + n + 1, (self->length - n - 1) * sizeof(void*));
+    memmove(self->buf + n, self->buf + n + 1, (self->length - n - 1) * sizeof(void*));
     self->length--;
 }
 
@@ -70,7 +70,7 @@ void vec_insert(void *self_, size_t pos, void *obj) {
         vec_enlarge(self);
     }
     if (pos > self->length || pos < 0) return;
-    memcpy(self->buf + pos + 1, self->buf + pos, sizeof(void*) * (self->length - pos));
+    memmove(self->buf + pos + 1, self->buf + pos, sizeof(void*) * (self->length - pos));
     self->buf[pos] = obj;
     self->length++;
 }
